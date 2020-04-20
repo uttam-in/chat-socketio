@@ -1,0 +1,16 @@
+<nb-card>
+  <nb-card-header>Login</nb-card-header>
+      <nb-card-body class="example-items-col">
+<form [formGroup]="loginForm" class="login-container" (ngSubmit)="login()">
+        <input autocomplete="username" formControlName="username" type="text" nbInput fullWidth status="basic" placeholder="User">
+        <input autocomplete="password" formControlName="password" type="password" nbInput fullWidth status="basic" placeholder="Password">
+
+<nb-card-footer>
+<button 
+[disabled]="loginForm.invalid"
+style="margin-top: 10px;"
+nbButton>Submit</button>
+</nb-card-footer>
+</form>
+      </nb-card-body>
+</nb-card>    
