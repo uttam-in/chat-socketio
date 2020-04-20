@@ -1,0 +1,34 @@
+<!--<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io.connect('http://localhost:3000');
+  socket.on('news', function (data) {
+    console.log(data);
+    socket.emit('my other event', { my: 'data' });
+  });
+</script>-->
+
+<!DOCTYPE html>
+<html>
+   <head>
+      <script src="/socket.io/socket.io.js"></script>
+      <script>
+         (function () {
+
+            var onMessage = function (data) {
+               // Do something with the message data
+            };
+
+            var connectToServer = function () {
+               var socket = io.connect('http://localhost:3000');
+               socket.on('message-name', onMessage);
+            };
+
+            connectToServer();
+
+         })();
+
+      </script>
+   </head>
+   <body>
+   </body>
+</html>
