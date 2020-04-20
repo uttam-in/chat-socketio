@@ -1,5 +1,7 @@
 node_modules
 build
 npm-debug.log
+db.sqlite3
+*.pyc 
 .env
 .DS_Store

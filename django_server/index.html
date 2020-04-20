@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+  <meta charset="utf-8" />
+  <title>WebSocket Test</title>
+  <script language="javascript" type="text/javascript">
+
+  var wsUri = "ws://192.168.99.101:8081/6aa02ae7413e427";
+  var output;
+
+  function init()
+  {
+    output = document.getElementById("output");
+    testWebSocket();
+  }
+
+  function testWebSocket()
+  {
+    websocket = new WebSocket(wsUri);
+    websocket.onopen = function(evt) { onOpen(evt) };
+    websocket.onclose = function(evt) { onClose(evt) };
+    websocket.onmessage = function(evt) { onMessage(evt) };
+    websocket.onerror = function(evt) { onError(evt) };
+  }
+
+  function onOpen(evt)
+  {
+    console.log("Connected..")
+  }
+
+  function onClose(evt)
+  {
+    console.log("Closed..")
+  }
+
+  function onMessage(evt)
+  {
+    const message = JSON.parse(evt.data)
+    console.log(message)
+    websocket.close();
+  }
+
+  function onError(evt)
+  {
+    writeToScreen('<span style="color: red;">ERROR:</span> ' + evt.data);
+  }
+
+  function doSend(message)
+  {
+    var number = Math.round(Math.random() * 0xFFFFFF);
+    writeToScreen("SENT: " + number.toString());
+    //writeToScreen("SENT: " + message);
+    websocket.send(number.toString());
+  }
+
+
+  window.addEventListener("load", init, false);
+
+  </script>
+
+  <h2>WebSocket Test</h2>
+
+  <div id="output"></div>
